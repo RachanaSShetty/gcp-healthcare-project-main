@@ -34,7 +34,7 @@ def upload_to_composer(directory: str, bucket_name: str, name_replacement: str) 
         file_gcs_path = file.replace(f"{temp_dir}/", name_replacement)
         try:
             blob = bucket.blob(file_gcs_path)
-            blob.upload_from_filename(file)  # Ensure only files are uploaded
+            blob.upload_from_filename(file)  # Ensure files are uploaded
             print(f"✅ Uploaded {file} to gs://{bucket_name}/{file_gcs_path}")
         except IsADirectoryError:
             print(f"⚠️ Skipping directory: {file}")
